@@ -13,9 +13,6 @@ logger.setLevel(level)
 FORMAT = '%(asctime)s - %(name)s - %(levelname)s: %(message)s'
 logging.basicConfig(format=FORMAT)
 
-console_handler = logging.StreamHandler()
-logger.addHandler(console_handler)
-
 
 @app.route('/start', methods=['POST'])
 def start():
