@@ -103,7 +103,7 @@ class Strategy(object):
         assert(sentinel not in self._round.knownalphabet)
         knownalphabet_complement = list(set(string.ascii_letters + string.digits) - set(self._round.knownalphabet))
 
-        knownsecret = self._round.knownsecret
+        knownsecret = self._round.knownsecret[-2:]
 
         candidate_secrets = set()
         for letter in alphabet:
