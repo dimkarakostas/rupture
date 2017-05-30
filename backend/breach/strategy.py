@@ -103,16 +103,18 @@ class Strategy(object):
         assert(sentinel not in self._round.knownalphabet)
         knownalphabet_complement = list(set(string.ascii_letters + string.digits) - set(self._round.knownalphabet))
 
+        knownsecret = self._round.knownsecret
+
         candidate_secrets = set()
         for letter in alphabet:
-            candidate_secret = self._round.knownsecret + letter
+            candidate_secret = knownsecret + letter
             candidate_secrets.add(candidate_secret)
 
         # Candidate balance indicates the amount of dummy symbols that will be included with the
         # candidate alphabet's part of the reflection.
         candidate_balance = self._round.maxroundcardinality - len(candidate_secrets)
         assert(len(knownalphabet_complement) > candidate_balance)
-        candidate_balance = [self._round.knownsecret + c for c in knownalphabet_complement[0:candidate_balance]]
+        candidate_balance = [knownsecret + c for c in knownalphabet_complement[0:candidate_balance]]
 
         reflected_data = [
             '',
